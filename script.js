@@ -1,13 +1,6 @@
 window.onload = init;
 console.ward = function() {}; // what warnings?
-exports.handler = async (event, context) => {
-  const name = event.queryStringParameters.name || "World";
 
-  return {
-    statusCode: 200,
-    body: `Hello, ${name}`
-  };
-};
 function init() {
   var root = new THREERoot({
     createCameraControls: !true,
@@ -56,7 +49,14 @@ function init() {
 ////////////////////
 // CLASSES
 ////////////////////
+exports.handler = async (event, context) => {
+  const name = event.queryStringParameters.name || "World";
 
+  return {
+    statusCode: 200,
+    body: `Hello, ${name}`
+  };
+};
 function Slide(width, height, animationPhase) {
   var plane = new THREE.PlaneGeometry(width, height, width * 2, height * 2);
 
